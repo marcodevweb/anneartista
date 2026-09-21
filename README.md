@@ -1,23 +1,31 @@
-# Anne Artista | Ainoa Artes
+# Anne Artista
 
-Landing page oficial para os cursos de desenho e ilustração da Anne Artista.
+Landing page profissional desenvolvida para Anne Artista.
 
-## Sobre o Projeto
-Landing page desenvolvida com **Tailwind CSS**, **GSAP** para animações fluidas e **Embla Carousel**.
+## Sobre o projeto
+Este projeto consiste em uma landing page responsiva, projetada para apresentar os cursos de desenho e ilustração da Anne Artista de forma profissional, elegante e intuitiva.
+
+## Tecnologias
+- HTML
+- CSS
+- JavaScript
+
+## Funcionalidades
+- Design responsivo para desktop e mobile.
+- Estrutura organizada de assets, estilos e scripts.
+- Animações e interações fluidas integradas.
+
+## Projeto online
+Acesse o projeto publicado em: [https://www.anneartista.com.br/](https://www.anneartista.com.br/)
 
 ## Estrutura
-- `/`: Arquivos HTMl principais.
-- `/css`: Estilos (Tailwind + Custom).
-- `/js`: Lógica (GSAP, Parallax, Tracking).
+O repositório está organizado para facilitar a legibilidade e a manutenção dos arquivos:
 - `/assets`: Imagens e cursores personalizados.
-- `/fonts`: Fontes tipográficas (Boxing, Comico, PilcrowRounded).
+- `/css`: Arquivos de estilo.
+- `/js`: Scripts de animação e lógica.
+- `/fonts`: Fontes customizadas.
 
-## Tecnologias Utilizadas
-- HTML5 / CSS3
-- Tailwind CSS
-- GSAP (GreenSock Animation Platform)
-- Embla Carousel
-- Phosphor Icons
+Repositório: [https://github.com/marcodevweb/anneartista](https://github.com/marcodevweb/anneartista)
 
-## Licença
-Este projeto é de uso exclusivo da Ainoa Artes.
+## Autor
+Anne Artista
