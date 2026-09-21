@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <title>Cursos de Desenho e Ilustração Online | Ainoa Artes</title>
+    <meta name="description" content="Aprenda a desenhar do zero, descubra seu estilo cartoon e saiba como ganhar dinheiro com sua arte. Conheça os cursos online de ilustração da Ainoa Artes.">
+    <link rel="canonical" href="https://anneartista.com.br/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anneartista.com.br/">
+    <meta property="og:title" content="Cursos de Desenho e Ilustração Online | Ainoa Artes">
+    <meta property="og:description" content="Aprenda a desenhar do zero, descubra seu estilo cartoon e saiba como ganhar dinheiro com sua arte. Conheça os cursos online de ilustração da Ainoa Artes.">
+    <meta property="og:image" content="assets/images/teacher-avatar.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anneartista.com.br/">
+    <meta property="twitter:title" content="Cursos de Desenho e Ilustração Online | Ainoa Artes">
+    <meta property="twitter:description" content="Aprenda a desenhar do zero, descubra seu estilo cartoon e saiba como ganhar dinheiro com sua arte.">
+    <meta property="twitter:image" content="https://anneartista.com.br/assets/images/teacher-avatar.jpeg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ainoa Artes",
+      "url": "https://anneartista.com.br/",
+      "logo": "https://anneartista.com.br/assets/images/teacher-avatar.jpeg",
+      "description": "Hub de cursos de desenho e ilustração online. Aprenda a desenhar do zero e ganhe dinheiro com sua arte."
+    }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- GSAP for Fluid & Bouncy Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="js/main.js" defer=""></script>
+    <script src="js/bg-doodles.js" defer=""></script>
+    <!-- Embla Carousel -->
+    <script src="https://unpkg.com/embla-carousel@8.6.0/embla-carousel.umd.js"></script>
+
+    <style>
+        /* Embla Parallax Core CSS */
+        .embla__parallax {
+            height: 100%;
+            overflow: visible;
+            border-radius: 2.5rem;
+            /* Matches the inner card's border radius */
+        }
+
+        .embla__parallax__layer {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: visible !important;
+        }
+
+        .embla__container {
+            padding-top: 2.0rem;
+            padding-bottom: 3rem;
+            padding-right: 2rem;
+            overflow: visible !important;
+        }
+
+        /* =============================================
+           VARAL - apenas em mobile e tablet (< 1024px)
+           ============================================= */
+        @media (max-width: 1023px) {
+
+            /* A seção de cursos precisa de overflow visible para o varal */
+            #cursos {
+                overflow: visible;
+            }
+
+            /* Linha do varal (Global novamente) */
+            .varal-rope {
+                display: block;
+                position: absolute;
+                left: -100vw;
+                right: -100vw;
+                /* Alinhado com o centro do furo (3.5rem padding + 32px de descida = ~5.5rem) */
+                top: 4rem;
+                height: 8px;
+                background: linear-gradient(to bottom,
+                        #0A3323 0%,
+                        #839958 20%,
+                        #0A3323 50%,
+                        #0A3323 80%,
+                        #062217 100%);
+                border-radius: 3px;
+                box-shadow:
+                    0 4px 8px rgba(0, 0, 0, 0.3),
+                    0 1px 2px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+                z-index: -1;
+                /* Atrás dos cards (z-index 10) */
+                pointer-events: none;
+            }
+
+            /* Furo Simples no topo do card */
+            .card-grommet {
+                display: block;
+                position: absolute;
+                top: 20px;
+                /* Descido para dar respiro */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: transparent;
+                /* Borda que dá o acabamento do furo */
+                border: 4px solid #0A3323;
+                z-index: 20;
+            }
+
+            /* Técnica de Máscara para furar o card e mostrar o fundo (varal) */
+            .section-curso {
+                -webkit-mask-image: radial-gradient(circle at 50% 32px, transparent 15px, black 16px);
+                mask-image: radial-gradient(circle at 50% 32px, transparent 15px, black 16px);
+                /* Aumento do padding top para o conteúdo não bater no furo */
+                padding-top: 4rem !important;
+            }
+        }
+
+        /* Ocultar elementos do varal no desktop */
+        @media (min-width: 1024px) {
+
+            .varal-rope,
+            .card-grommet {
+                display: none !important;
+            }
+
+            .section-curso {
+                -webkit-mask-image: none;
+                mask-image: none;
+                padding-top: 2.5rem !important;
+                /* Reset no desktop */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-beige text-dark-green font-pilcrow min-h-screen w-full relative overflow-x-hidden">
+
+    <div id="page-clip-wrapper">
+
+        <!-- Header de Navegação -->
+        <nav class="bg-moss-green text-beige p-3 md:p-4 sticky top-0 z-50 border-b-4 border-dark-green shadow-[0_6px_0_0_#0A3323]">
+            <div class="container mx-auto flex justify-between items-center gap-4">
+                <span class="font-comico text-xl md:text-2xl flex items-center flex-shrink-0 hover:text-beige/80 transition-colors">
+                    <i class="ph-fill ph-palette hidden md:block"></i> Anne&nbsp;Artista
+                </span>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="relative pt-6 sm:pt-12 px-4 container mx-auto reveal">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-20">
+
+                    <!-- Coluna Esquerda: Conteúdo -->
+                    <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+                        <div class="hidden lg:block mb-8 reveal z-10">
+                            <span class=" relative z-10 bg-rosy-brown text-beige px-3 md:px-6 py-2 rounded-full font-boxing text-sm md:text-base uppercase tracking-widest border-4 border-dark-green shadow-[4px_4px_0_0_#0A3323] rotate-[-2deg] inline-block">A
+                                sua jornada começa aqui</span>
+                        </div>
+
+                        <h1 class="font-comico text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-dark-green leading-[1.1] relative z-10 reveal">
+                            <span class="sr-only">Curso de Ilustração Online e Cursos de Desenho</span>
+                            Transforme sua imaginação em <span class="!text-midnight-teal relative inline-block whitespace-nowrap">arte</span>.
+                        </h1>
+
+                        <p class="font-pilcrow text-base sm:text-lg md:text-2xl text-dark-green/80 mt-4 sm:mt-6 lg:mb-12 font-medium max-w-2xl lg:max-w-none reveal">
+                            Aprenda a desenhar do zero e a viver da sua arte! Libere seu potencial criativo e transforme
+                            sua
+                            paixão em sucesso!
+                        </p>
+
+                        <div class="py-2 reveal relative z-10">
+                            <a href="#cursos" class="hidden lg:inline-flex bg-rosy-brown text-beige font-boxing text-xl md:text-2xl py-5 px-10 md:px-16 rounded-full border-4 border-dark-green shadow-[8px_8px_0_0_#0A3323] hover:animate-bounce-sutil hover:translate-x-[-2px] hover:shadow-[12px_12px_0_0_#0A3323] active:translate-x-2 active:translate-y-2 active:shadow-none transition-all duration-200 ease-out items-center gap-3 relative z-10">
+                                Ver Cursos <i class="ph-bold ph-arrow-down"></i>
+                            </a>
+                        </div>
+
+                        <div class="block lg:hidden mt-3 reveal z-10">
+                            <span class=" relative z-10 bg-rosy-brown text-beige px-3 md:px-6 py-2 rounded-full font-boxing text-sm md:text-base uppercase tracking-widest border-4 border-dark-green shadow-[4px_4px_0_0_#0A3323] rotate-[-2deg] inline-block">
+                                Cursos Disponíveis
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Coluna Direita: Teacher Identity -->
+                    <div class="w-full lg:w-1/2 flex justify-center order-1 lg:order-2">
+                        <div class="reveal flex flex-col items-center gap-6 md:gap-10">
+                            <div class="reveal z-10 flex flex-col items-center gap-10">
+                                <div class="group relative bg-white w-40 h-40 sm:w-56 sm:h-56 md:w-60 md:h-60 lg:w-96 lg:h-96 rounded-full border-4 md:border-8 border-dark-green shadow-[12px_12px_0_0_#0A3323] md:shadow-[20px_20px_0_0_#0A3323] hover:shadow-[30px_30px_0_0_#0A3323] hover:-translate-y-4 hover:-rotate-3 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden">
+
+                                    <!-- Cartoon Version (Hover State) -->
+                                    <div class="absolute inset-0 w-full h-full bg-rosy-brown transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] translate-y-full group-hover:translate-y-0 z-20">
+                                        <img src="assets/images/teacher-drawed-avatar.jpeg" alt="Anne Cartoon" class="w-full h-full object-cover" decoding="async" fetchpriority="high">
+                                    </div>
+
+                                    <!-- Real Photo -->
+                                    <img src="assets/images/teacher-avatar.jpeg" alt="Ainoa Artes" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] translate-y-0 group-hover:-translate-y-full z-10" decoding="async" fetchpriority="high">
+                                </div>
+                            </div>
+                            <div class="text-center space-y-3">
+                                <h3 class="font-boxing uppercase text-xl md:text-2xl lg:text-6xl text-dark-green">Anne
+                                    Artista
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grade de Cursos -->
+            <section id="cursos" class="container mx-auto px-4 lg:py-16 space-y-8 lg:space-y-16 relative z-10">
+                <div class="text-center mb-8 lg:mb-16 reveal">
+                    <div class="relative">
+                        <!-- Varal Global - Visível entre cards e nos furos -->
+                        <div class="varal-rope"></div>
+
+                        <div class="embla overflow-visible w-full" id="cursos-carousel">
+                            <div class="embla__container flex lg:grid lg:grid-cols-3 gap-12 xl:gap-14 lg:ml-0 -ml-6">
+
+                                <!-- Curso 1: Primeiros Traços -->
+                                <div class="embla__slide flex-[0_0_92%] md:flex-[0_0_70%] min-w-0 pl-6 md:mr-5 lg:mr-0 lg:pl-0 lg:flex-none">
+                                    <div class="embla__parallax h-full">
+                                        <div class="embla__parallax__layer h-full">
+                                            <a href="primeiros-tracos.html" target="_blank" class="reveal overflow-hidden section-curso bg-white p-3 md:p-10 rounded-[2.5rem] border-4 border-dark-green shadow-[14px_14px_0_0_#0A3323] hover:-translate-y-4 hover:scale-[1.02] hover:shadow-[24px_24px_0_0_#0A3323] transition-all duration-300 ease-in-out flex flex-col h-full group relative z-10 cursor-pointer">
+
+                                                <!-- Ilhó 3D (Varal) - apenas mobile/tablet -->
+                                                <div class="card-grommet"></div>
+                                                <!-- Elemento Visual Temático (Feature Highlight Criativo) -->
+                                                <div class="absolute z-10 -left-4 -top-6 w-48 h-48 bg-rosy-brown rounded-[40%_60%_70%_30%_/_40%_40%_60%_60%] scale-150 group-hover:scale-120 group-hover:rotate-12 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-center shadow-[8px_8px_0_0_#0A3323] pointer-events-none">
+                                                </div>
+
+                                                <div class="w-full h-40 md:h-56 bg-beige border-4 border-dark-green rounded-[1.5rem] mb-4 md:mb-8 overflow-hidden relative transition-all duration-200 ease-out group-hover:scale-[1.02] flex items-center justify-center z-10">
+                                                    <img src="assets/images/thumb-primeiros-tracos.jpeg" alt="Primeiros Traços" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                                                </div>
+
+                                                <span class="text-dark-green font-boxing tracking-widest uppercase text-[10px]
+                                                 md:text-base mb-3 bg-beige inline-block self-start px-4 py-2 rounded-xl border-2 border-dark-green shadow-[4px_4px_0_0_#0A3323] relative z-10">
+                                                    Iniciantes
+                                                </span>
+                                                <h3 class="font-comico text-2xl md:text-4xl text-dark-green pt-1 md:pt-4 mb-2 md:mb-4 group-hover:text-rosy-brown transition-colors relative z-10">
+                                                    Primeiros Traços</h3>
+                                                <p class="font-pilcrow text-sm md:text-xl opacity-80 mb-4 md:mb-10 relative z-10">
+                                                    Aprenda a desenhar do zero dominando o desenho de observação
+                                                </p>
+                                                <div class="uppercase inline-flex justify-center items-center gap-2 self-start bg-rosy-brown text-beige text-sm md:text-xl px-4 py-2 rounded-full font-boxing border-4 border-dark-green shadow-[6px_6px_0_0_#0A3323] group-hover:bg-[#c08278] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all duration-200 ease-out w-fit md:w-auto relative z-30">
+                                                    Começar Agora <i class="ph-bold ph-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Curso 2: Cartoonizando (Destaque) -->
+                                <div class="embla__slide flex-[0_0_92%] md:flex-[0_0_70%] min-w-0 lg:flex-none">
+                                    <div class="embla__parallax h-full">
+                                        <div class="embla__parallax__layer h-full">
+                                            <a href="cartoonizando.html" target="_blank" class="reveal overflow-visible section-curso bg-midnight-teal text-beige p-3 md:p-10 rounded-[2.5rem] border-4 border-dark-green shadow-[14px_14px_0_0_#0A3323] hover:-translate-y-4 hover:scale-[1.02] hover:shadow-[24px_24px_0_0_#0A3323] transition-all duration-300 ease-in-out flex flex-col h-full group relative z-10 cursor-pointer">
+
+                                                <!-- Ilhó 3D (Varal) - apenas mobile/tablet -->
+                                                <div class="card-grommet"></div>
+
+                                                <!-- Tag de Destaque (Selo/Sticker) -->
+                                                <div class="absolute w-max top-9 lg:top-0 right-1/4 md:right-1/2 lg:-right-[25px] bg-rosy-brown text-beige font-boxing text-[9px] md:text-[10px] lg:text-lg py-2 px-3 md:px-6 rounded-xl border-4 border-dark-green shadow-[6px_6px_0_0_#0A3323] rotate-12 z-40 group-hover:rotate-3 group-hover:scale-110 transition-transform duration-300">
+                                                    FAVORITO DOS ALUNOS ⭐
+                                                </div>
+
+                                                <div class="w-full h-40 md:h-56 bg-white/10 border-4 border-beige rounded-[1.5rem] mb-4 md:mb-8 overflow-hidden relative transition-all duration-200 ease-out group-hover:scale-[1.02] flex items-center justify-center">
+                                                    <img src="assets/images/thumb-cartoonizando.jpeg" alt="Cartoonizando" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                                                </div>
+
+                                                <span class="text-beige font-boxing tracking-widest uppercase text-[10px] md:text-base mb-3 bg-moss-green inline-block self-start px-4 py-2 rounded-xl border-2 border-dark-green shadow-[4px_4px_0_0_#0A3323]">
+                                                    Intermediário
+                                                </span>
+                                                <h3 class="font-comico text-2xl md:text-4xl text-beige pt-1 md:pt-4 mb-2 md:mb-4 group-hover:text-moss-green transition-colors">
+                                                    Cartoonizando</h3>
+                                                <p class="font-pilcrow text-sm md:text-xl opacity-90 mb-4 md:mb-10">
+                                                    Aprenda a
+                                                    desenhar rostos, criar
+                                                    personagens com personalidade e estilizar expressões.</p>
+                                                <div class="uppercase inline-flex justify-center items-center gap-2 self-start bg-moss-green text-beige text-sm md:text-xl px-4 py-2 rounded-full font-boxing border-4 border-dark-green shadow-[6px_6px_0_0_#0A3323] group-hover:bg-[#72874a] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all duration-200 ease-out w-fit md:w-auto relative">
+                                                    Conhecer o Curso <i class="ph-bold ph-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Curso 3: Artista Empreendedor -->
+                                <div class="embla__slide flex-[0_0_92%] md:flex-[0_0_70%] min-w-0 pr-6 lg:flex-none">
+                                    <div class="embla__parallax h-full">
+                                        <div class="embla__parallax__layer h-full">
+                                            <a href="artista-empreendedor.html" target="_blank" class="reveal overflow-hidden section-curso bg-moss-green text-beige p-3 md:p-10 rounded-[2.5rem] border-4 border-dark-green shadow-[14px_14px_0_0_#0A3323] hover:-translate-y-4 hover:scale-[1.02] hover:shadow-[24px_24px_0_0_#0A3323] transition-all duration-300 ease-in-out flex flex-col h-full group relative z-10 cursor-pointer">
+
+                                                <!-- Ilhó 3D (Varal) - apenas mobile/tablet -->
+                                                <div class="card-grommet"></div>
+
+                                                <div class="absolute z-10 -right-8 -bottom-8 scale-[1.3] group-hover:scale-[1.2] transition-transform duration-700 pointer-events-none ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                                                    <i class="ph-fill ph-star text-9xl text-dark-green group-hover:animate-[spin_3s_linear_infinite] inline-block"></i>
+                                                </div>
+
+                                                <div class="w-full z-10 h-40 md:h-56 bg-dark-green/20 border-4 border-dark-green rounded-[1.5rem] mb-4 md:mb-8 overflow-hidden relative transition-all duration-200 ease-out group-hover:scale-[1.02] flex items-center justify-center">
+                                                    <img src="assets/images/thumb-artista-empreendedor.jpeg" alt="Artista Empreendedor" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                                                </div>
+                                                <span class="text-beige font-boxing tracking-widest uppercase text-[10px] md:text-base mb-3 bg-dark-green inline-block self-start px-4 py-2 rounded-xl border-2 border-dark-green shadow-[4px_4px_0_0_#0A3323]">Para
+                                                    todos</span>
+                                                <h3 class="font-comico text-lg md:text-2xl text-beige pt-1 md:pt-4 mb-2 md:mb-4 group-hover:text-dark-green transition-colors">
+                                                    Artista Empreendedor</h3>
+                                                <p class="z-10 font-pilcrow text-sm md:text-xl opacity-90 mb-4 md:mb-10">
+                                                    Aprenda a vender
+                                                    a sua arte e viver daquilo que você ama fazer.</p>
+                                                <div class="uppercase z-10 inline-flex justify-center items-center gap-2 self-start bg-dark-green text-beige text-sm md:text-xl px-4 py-2 rounded-full font-boxing border-4 border-beige shadow-[6px_6px_0_0_#D3968C] group-hover:bg-[#072418] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all duration-200 ease-out w-fit md:w-auto relative">
+                                                    Acessar Agora <i class="ph-bold ph-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+            </div></div></section>
+
+            <!-- Divider para o footer -->
+            <div class="h-10"></div>
+        </main>
+
+        <!-- FOOTER NEO BRUTALISTA -->
+        <footer class="reveal bg-dark-green text-beige border-t-8 border-rosy-brown pt-14 md:pt-24 pb-10 md:pb-12 relative overflow-hidden z-10">
+            <!-- Marca d'água estrutural -->
+            <div class="absolute -top-16 -right-10 text-[18rem] leading-none opacity-5 font-comico pointer-events-none -rotate-[10deg] select-none">
+                Anne
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
+
+                    <!-- Coluna Esquerda: Statement e Identidade -->
+                    <div class="space-y-6">
+                        <h2 class="font-comico text-2xl md:text-3xl lg:text-6xl leading-tight reveal">
+                            Chegou a hora de riscar o papel.
+                        </h2>
+                        <p class="font-pilcrow text-lg md:text-xl lg:text-2xl opacity-80 max-w-lg leading-relaxed reveal">
+                            Esqueça a perfeição técnica vazia. Aqui construímos ilustradores com identidade, atitude e
+                            fundamento.
+                        </p>
+                    </div>
+
+                    <!-- Coluna Direita: Ações e Redes -->
+                    <div class="flex flex-col md:items-end gap-10">
+                        <!-- Bolhas Sociais com Efeito Disconnect Dinâmico -->
+                        <div class="flex gap-4 md:gap-8 reveal">
+                            <!-- Instagram -->
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-midnight-teal rounded-3xl translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300">
+                                </div>
+                                <a href="https://www.instagram.com/artista.anne/" target="_blank" class="relative z-10 w-20 h-20 bg-midnight-teal text-beige rounded-3xl border-4 border-dark-green flex items-center justify-center text-5xl hover:-translate-y-2 hover:-translate-x-1 transition-all duration-300 active:translate-y-1 active:translate-x-1">
+                                    <i class="ph-fill ph-instagram-logo"></i>
+                                </a>
+                            </div>
+
+                            <!-- YouTube -->
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-rosy-brown rounded-3xl translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300">
+                                </div>
+                                <a href="https://www.youtube.com/@anne_artista" target="_blank" class="relative z-10 w-20 h-20 bg-rosy-brown text-beige rounded-3xl border-4 border-dark-green flex items-center justify-center text-5xl hover:-translate-y-2 hover:-translate-x-1 transition-all duration-300 active:translate-y-1 active:translate-x-1">
+                                    <i class="ph-fill ph-youtube-logo"></i>
+                                </a>
+                            </div>
+
+                            <!-- TikTok -->
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-beige rounded-3xl translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300">
+                                </div>
+                                <a href="https://www.tiktok.com/@artista.anne" target="_blank" class="relative z-10 w-20 h-20 bg-beige text-dark-green rounded-3xl border-4 border-dark-green flex items-center justify-center text-5xl hover:-translate-y-2 hover:-translate-x-1 transition-all duration-300 active:translate-y-1 active:translate-x-1">
+                                    <i class="ph-fill ph-tiktok-logo"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisor Duro / Brutalista -->
+                <div class="h-2 w-full bg-beige border-y-4 border-dark-green border-dashed mb-10 opacity-30"></div>
+
+                <!-- Assinatura e Links Legais -->
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 font-pilcrow text-lg text-beige/60">
+                    <p>© 2026 Ainoa Artes. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /#page-clip-wrapper -->
+
+
+</body></html>
